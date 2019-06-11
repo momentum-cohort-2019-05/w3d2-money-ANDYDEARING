@@ -107,3 +107,19 @@ class Money:
         """
         new_money = Money(self.amount/divisor, self.currency)
         return new_money
+    
+    def __add__(self,other):
+        """allows use of the + operand between Money objects"""
+        return self.add(other)
+
+    def __sub__(self,other):
+        """allows use of the - operand between Money objects"""
+        return self.sub(other)
+
+    def __mul__(self,multiplier):
+        """allows use of the * operand between a Money object and number"""
+        return self.mul(multiplier)
+
+    def __truediv__(self,divisor):
+        """allows use of the / operand between a Money object and an int"""
+        return self.div(divisor)

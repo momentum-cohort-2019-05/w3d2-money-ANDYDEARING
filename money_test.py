@@ -87,3 +87,19 @@ def test_mul_money():
 def test_div_money():
     assert Money(3, USD).div(3) == Money(1, USD)
     assert Money(12, USD).div(4) == Money(3, USD)
+
+def test_plus():
+        assert Money(4, USD) + Money(3, USD) == Money(7, USD)
+        assert Money(12, USD) + Money(5, USD) == Money(17, USD)
+
+def test_minus():
+        assert Money(4, USD) - Money(3, USD) == Money(1, USD)
+        assert Money(22, USD) - Money(10, USD) == Money(12, USD)
+
+def test_multiply():
+        assert Money(4, USD) * 3 == Money(12, USD)
+        assert Money(6, USD) * 6 == Money(36, USD)
+
+def test_divide():
+        assert Money(4, USD) / 4 == Money(1, USD)
+        assert Money(25, USD) / 5 == Money(5, USD)
