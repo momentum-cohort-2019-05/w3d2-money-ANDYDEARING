@@ -15,13 +15,19 @@ class Currency:
         - symbol - optional symbol used to designate currency
         - digits -- number of significant digits used
         """
-        pass
+        self.name = name
+        self.code = code
+        self.symbol = symbol
+        self.digits = digits
 
     def __str__(self):
         """
         Should return the currency code, or code with symbol in parentheses.
         """
-        pass
+        if self.symbol is None:
+            return self.code
+        else:
+            return f"({self.symbol})"
 
     def __eq__(self, other):
         """
@@ -43,7 +49,8 @@ class Money:
         - amount -- quantity of currency
         - currency -- type of currency
         """
-        pass
+        self.amount = amount
+        self.currency = currency
 
     def __str__(self):
         """
@@ -70,23 +77,33 @@ class Money:
         Add two money objects of the same currency. If they have different
         currencies, raise a DifferentCurrencyError.
         """
-        pass
+        if self.currency != other.currency:
+            raise DifferentCurrencyError
+        else:
+            new_money = Money(self.amount+other.amount, self.currency)
+            return new_money
 
     def sub(self, other):
         """
         Subtract two money objects of the same currency. If they have different
         currencies, raise a DifferentCurrencyError.
         """
-        pass
+        if self.currency != other.currency:
+            raise DifferentCurrencyError
+        else:
+            new_money = Money(self.amount-other.amount, self.currency)
+            return new_money
 
     def mul(self, multiplier):
         """
         Multiply a money object by a number to get a new money object.
         """
-        pass
+        new_money = Money(self.amount*multiplier, self.currency)
+        return new_money
 
     def div(self, divisor):
         """
         Divide a money object by a number to get a new money object.
         """
-        pass
+        new_money = Money(self.amount/divisor, self.currency)
+        return new_money
